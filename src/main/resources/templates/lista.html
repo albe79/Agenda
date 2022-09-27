@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="estilo.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<main>
+    <div class=" px-4 py-3 my-3 text-center" >
+      <div class="my-5">
+        <h1 class="display-5 fw-bold mb-4">Tareas</h1>
+        <a href="/nueva" class="btn btn-secondary">crear nueva</a>
+    </div>
+
+        <div class="d-flex" gap-4 justify-content-center>
+            <div th:each="tarea : ${tarea}" class="card" style="width: 16rem;">
+                <div th:switch="${tarea.estado}">
+                    <img th:case="true" src="Imagenes/hecho.png" class="card-img-top" alt="finalizada" style="width:20px">
+                    <img th:case="false" src="Imagenes/pending.png" class="card-img-top" alt="sin finalizar" style="width=20px">
+                </div>
+                <div class="card-body" >
+                    <h5 class="card-title" th:text="${tarea.descripcion}"></h5>
+                    <p class="card-text" th:text="${tarea.creacion}"></p>
+                    <div class="d-flex flex-column gap=4">
+                    <div th:if="${!tarea.estado}">
+                        <form th:action="@{/guardar/{id}(id=${tarea.id})}" th:method="patch">
+                    <button type="submit" class="btn btn-primary">finalizar tarea</button>
+                        </form>
+                </div>
+                    <div th:if="${!tarea.estado}">
+                        <form th:action="@{/guardar/{id}(id=${tarea.id})}" th:method="delete">
+                            <button type="submit" class="btn btn-danger">eliminar tarea</button>
+                        </form>
+                    </div>
+                    </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
