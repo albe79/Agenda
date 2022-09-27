@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>Probando</title>
+    <title>Agenda AleMil</title>
     <link rel="stylesheet" href="estilo.css" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
@@ -10,19 +10,30 @@
 <main>
     <div class=" px-4 py-5 my-5 text-center" >
         <img src="Imagenes/portapapeles.png" class="d-block mx-auto mb-4" height="60px" alt="tareasicon">
-        <h1 class="display-5 fw-bold">Agenda</h1>
+        <h1 class="display-5 fw-bold">Agenda AleMil</h1>
         <div class=" col-lg-6 mx-auto ">
-        <p class="lead mb-4">Esta es una agenda para programar tu tiempo y puedas saber que tareas tienes para hacer, o si ya las hiciste </p>
+        <p class="lead mb-4">Esta es una agenda para programar tus actividades y puedas saber que tareas tienes para hacer, o si ya las hiciste </p>
             <div sec:authorize="!isAuthenticated()">
                 <a th:href="@{/oauth2/authorization/auth0}">Iniciar sesion</a>
             </div>
             <div sec:authorize="isAuthenticated()">
-               <h3 th:text="${usu.getEmail()}"></h3>
+            <p>Bienvenido</p>
+               <h3 th:text="${usu.getEmail()}">Esta conectado</h3>
                 <p>estas registrado!</p>
                 <a th:href="@{/lista}">Ingresar</a>
             </div>
-       <!-- <a href="/lista" type="button" class="btn btn-primary" btn-lg px-4 gap 3>a tareas</a>-->
-        <button type="button" class="btn btn-outline-secondary" btn-lg px-4 >saber mas..</button>
+            <!-- <div sec:authorize="!isAuthenticated()" gap 6>
+                 <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary">iniciar Sesion</a>
+
+             </div><br><br>
+             <div sec:authorize="isAuthenticated()">
+                 <p>Bienvenido</p>
+                 <p th:text= "${usua.email}">Esta conectado!</p>
+                 <a th:href="@{/opciones}" class="btn btn-primary">Ingresar</a>
+
+             </div>-->
+        <!-- <a href="/lista" type="button" class="btn btn-primary" btn-lg px-4 gap 3>a tareas</a>-->
+        <a th:href="@{/saber}" type="button" class="btn btn-outline-secondary" btn-lg px-4 >saber mas..</a>
         </div>
     </div>
 

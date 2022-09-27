@@ -36,6 +36,10 @@ public class frontcontroller {
         }
         return "index";
     }
+    @GetMapping ("/saber")
+    public String ayuda(){
+       return "saber mas";
+    }
 
     @GetMapping("/lista")
     public String lista( Model modelo) {

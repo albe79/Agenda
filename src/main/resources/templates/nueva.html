@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="estilo.css" type="text/css" />
@@ -9,6 +9,7 @@
 <body>
 <div class=" px-4 py-5 my-5 text-center d-flex flex-column gap 3 align-items-center">
     <h1>tarea nueva</h1>
+    <a href="/" class="btn btn-primary">a inicio</a>
     <form th:action="@{/guardar}" th:method="post" th:object="${nuevatarea}" class="d-flex flex-column gap 3 align-items-center">
         <input th:field="*{descripcion}" class="form-control" type="text" placeholder="descripcion">
         <input th:field="*{creacion}" class="form-control" type="date">
